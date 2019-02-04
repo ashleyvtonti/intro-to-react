@@ -18,6 +18,7 @@
            return (
              <div>
                <h1>Hello World!</h1>
+               <h1>Hello {this.props.name}!</h1>
              </div>
            );
          }
@@ -26,9 +27,8 @@
        ReactDOM.render(
          <div>
            <Greeting />
-           <Greeting />
-         </div>, document.getElementById('app')
-       );
+           <Greeting name="Ashley"/>, document.getElementById('app')
+        );
     </script>
   </body>
 </html>
