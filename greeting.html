@@ -13,11 +13,28 @@
 
     <script type="text/babel">
        class Greeting extends React.Component {
+         constructor() {
+           super()
+
+           this.state = {
+             visible: true,
+             defaultName: 'Bob'
+           }
+
+           this.toggleView = this.toggleView.bind(this);
+         }
+
+         toggleView() {
+           this.setState({
+             visible: !this.state.visible,
+           })
+         }
+
          render() {
            return (
              <div>
-               <h1>Hello World!</h1>
-               <h1>Hello {this.props.name}!</h1>
+               <h1 style={{ display: this.state.visible ? 'block': 'none'}}>Hello {this.props.name ? this.props.name : this.state.defaultName }!</h1>
+               <div onClick={this.toggleView}>{this.state.visible ? 'Hide' : 'Show'}</div>
              </div>
            );
          }
@@ -25,8 +42,9 @@
 
        ReactDOM.render(
          <div>
-           <Greeting />
-           <Greeting name="Ashley"/>, document.getElementById('app')
+           <Greeting name="Bill"/>
+           <Greeting name="Ashley"/>
+        </div>, document.getElementById('app')
         );
     </script>
   </body>
